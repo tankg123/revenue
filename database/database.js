@@ -1,7 +1,7 @@
 const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
 
-const dbPath = path.join(__dirname, "../data/qa.sqlite");
+const dbPath = path.join(__dirname, "../database/qa.db");
 
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
@@ -14,7 +14,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
 db.run(`
   CREATE TABLE IF NOT EXISTS qa (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    question TEXT UNIQUE,
+    question TEXT COLLATE NOCASE UNIQUE,
     traloi TEXT
   )
 `);
