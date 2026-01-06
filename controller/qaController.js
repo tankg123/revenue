@@ -11,21 +11,28 @@ exports.getAll = async (req, res) => {
 
 exports.ask = async (req, res) => {
   try {
-    const { question } = req.body;
+    let { question } = req.body
     if (!question) {
-      return res.status(400).json({ error: "Missing question" });
+      return res.status(400).json({ error: "Missing question" })
     }
 
-    const row = await QA.getByQuestion(question);
+    question = question.trim()
+
+    const row = await QA.getByQuestion(question)
+
     if (!row) {
-      return res.json({ status: "not_found", traloi: null });
+      return res.json({ status: "not_found", traloi: null })
     }
 
-    res.json({ status: "success", traloi: row.traloi });
+    res.json({
+      status: "success",
+      traloi: row.traloi
+    })
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err.message })
   }
-};
+}
+
 
 exports.create = async (req, res) => {
   try {
