@@ -15,8 +15,4 @@ app.get("/", (req, res) => {
 
 app.use("/api/qa", qaRoutes);
 
-const PORT = process.env.PORT || 3003;
-
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`✅ Server running on port ${PORT}`);
-});
+module.exports = app;

@@ -2,6 +2,6 @@ const app = require("./app");
 
 const PORT = process.env.PORT || 3003;
 
-app.listen(PORT, () => {
-  console.log(`✅ Server đang chạy tại https://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
